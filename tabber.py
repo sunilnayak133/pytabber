@@ -169,7 +169,7 @@ def tabdisplay(tab):
 	showfretboard(tab)
 
 
-#running the program to just see fretboard after making the frets
+#running the program
 fretmaker(tuning,octaves,strs)
 showfretboard(strs)
 print ""
