@@ -69,7 +69,7 @@ def findnote(note,strs):
 soloj = ["D2","G2","A2","G2","C3","D3","D2","G2","A2","G2","C3","D3"]
 
 #stairway to heaven
-solos = ["A2","C3","E3","A3","B3","E3","C3","B3","C4","E3","C3","C4","F#3","D3","A2"]
+solos = ["A2","C3","E3","A3","B3","E3","C3","B3","C4","E3","C3","C4","F#3","D3","A2","F#3","E3","C3","A2","C3","E3","C3","A2"]
 
 #to start the tab, with the tuning written at the side
 tab = [[i] for i in tuning]
@@ -110,13 +110,8 @@ def tabitoff(solo,strs):
 def regmaker(first, second=-1):
 	if(first==0):
 		reg = [0,0]
-	elif(second==-1):
-		reg = [first-2,first+2]
 	else:
-		if(second<first):
-			reg = [first-2,first+1]
-		else:
-			reg = [first-1,first+2]
+		reg = [first-2,first+2]
 	return reg
 	
 def inreg(f):
