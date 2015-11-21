@@ -2,9 +2,9 @@
 #Current Issues: 
 # - Doesn't account for stuff like Hammer Ons, Pull Offs, Bending of Strings, etc. yet.
 # - Doesn't account for what notes it'll be playing next, maybe use a different search algorithm?
-# - Doesn't account for the open-string-dilemma (playing an open string 
+# x Doesn't account for the open-string-dilemma (playing an open string 
 #   after a note on a high fret doesn't necessarily mean playing stuff 
-#   on frets like 1 or 2 after that are easy) - work on a better heuristic ?
+#   on frets like 1 or 2 after that are easy) - work on a better heuristic x FIXED, USES REGION CHECK NOW
 #Conventions:
 # - Strings are numbered from bottom to top, 0 to 5 (or how many ever). 
 # - It's not only for a 6 string guitar, you can put in how many ever notes in the tuning to change the number of strings
@@ -142,28 +142,8 @@ def findbest(note,ws,wf):
 	
 	#looping through all the positions of the note 
 	#and assigning costs to all of them
-	#'''
-	'''
-	for i in pos_arr:
-		if(i==-1):
-			costs.append(1000)
-		else:
-			#if the new note is on the open string
-			if(i==0):
-				costs.append(diff(cs,ws)-0.5)
-			#if the new note is on the same string	
-			elif(cs==ws):
-				costs.append(diff(i,wf))
-			#if the new note is on the same fret of the different string
-			elif(i==wf):
-				costs.append(diff(cs,ws)-0.5)
-			#if the new note is on a different string and different fret
-			else:
-				costs.append(diff(cs,ws)+diff(i,wf))
-		cs+=1
-	'''
-	#'''
-	#Try using a region based search instead??
+
+	#Checking costs using region-based search
 	for i in pos_arr:
 		if(i==-1):
 			costs.append(1000)
