@@ -1,9 +1,9 @@
-# pytabber
+# PyTabber
 **Author:**  
 Sunil S Nayak  
 
 **Description:**  
-An Automatic Guitar Easy-Tab maker written in Python2 (work in progress)  
+An Automatic Guitar Easy-Tab maker written in Python2 (work in progress - audio input support will be added once this is proven to work well for a reasonable number of solos, chord support will be added sometime later)  
 
 **Dependencies:**  
 Only Python2 is needed.  
@@ -13,9 +13,10 @@ Only Python2 is needed.
 ``python tabber.py``  
 
 **Checks:**  
-Make sure you input the proper seed value for the start note as otherwise the first note will be wrongly tabbed.  
+Make sure you set the proper seed value for the start note at "curpos" as otherwise the first note will be wrongly tabbed.  
+Also make sure you set the proper tuning for the guitar with the right octaves for each note in the tuning desired.  
 
-**Sample Output:**::
+**Sample Output:**::  
     $ python tabber.py
 
 
