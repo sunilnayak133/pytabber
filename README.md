@@ -38,12 +38,12 @@ Also make sure you set the proper tuning for the guitar with the right octaves f
     
     Stairway To Heaven (Led Zeppelin): Tab of the Intro
     
-    E   -   -   -   5   7   -   -   7   8   -   -   8   -   -   -    
-    B   -   -   5   -   -   5   -   -   -   5   -   -   7   -   -    
-    G   -   5   -   -   -   -   5   -   -   -   5   -   -   7   -    
-    D   7   -   -   -   -   -   -   -   -   -   -   -   -   -   7    
-    A   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -    
-    E   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -    
+    E   -   -   -   5   7   -   -   7   8   -   -   8   -   -   -   -   -   -   -   -   -   -   -    
+    B   -   -   5   -   -   5   -   -   -   5   -   -   7   -   -   7   5   -   -   -   5   -   -    
+    G   -   5   -   -   -   -   5   -   -   -   5   -   -   7   -   -   -   5   -   5   -   5   -    
+    D   7   -   -   -   -   -   -   -   -   -   -   -   -   -   7   -   -   -   7   -   -   -   7    
+    A   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -    
+    E   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -    
 
 *Call for Help:*  
 Text with single note Solos/Riffs/Licks (like the ones I've used above) in the format ["C3","C#3",...,"B3"] would be much  appreciated.  
