@@ -26,6 +26,10 @@ octaves = octaves[::-1]
 strs = []
 #number of frets
 nofrets = 20
+#current region (2 fret gap on either side)
+region = [5,9]
+#current position - will have to change this for multiple strings
+curpos = []
 
 #sets up values for the fretboards
 def fretmaker(tune,octa,strs):
@@ -62,21 +66,22 @@ def findnote(note,strs):
 	return notepos
 
 #joker and the thief
-#solo = ["D2","G2","A2","G2","C3","D3","D2","G2","A2","G2","C3","D3"]
+soloj = ["D2","G2","A2","G2","C3","D3","D2","G2","A2","G2","C3","D3"]
 
 #stairway to heaven
-solo = ["A2","C3","E3","A3","B3","E3","C3","B3","C4","E3","C3","C4","F#3","D3","A2"]
+solos = ["A2","C3","E3","A3","B3","E3","C3","B3","C4","E3","C3","C4","F#3","D3","A2"]
 
 #to start the tab, with the tuning written at the side
 tab = [[i] for i in tuning]
 
 #to make the tab
 def tabitoff(solo,strs):
+	global region
+	global curpos
 	#first note of the solo
 	starter = solo[0]
 
-	#current position
-	curpos = []
+	
 	#decide how to start the solo better, 
 	#right now it just chooses open string if possible
 	#or else it chooses the highest fret with the value needed
@@ -87,8 +92,8 @@ def tabitoff(solo,strs):
 	#	m = max(where)
 	#	curpos = [where.index(m),m]
 
-	#give a seed value to first position instead?
-	curpos = [3,7]
+	
+	region = regmaker(7)
 
 	#Write the start position to the tab array	
 	tabwriter(*curpos)
@@ -101,13 +106,31 @@ def tabitoff(solo,strs):
 	#Now display the tab	
 	tabdisplay(tab)
 
+#to make a region around two notes (in order)
+def regmaker(first, second=-1):
+	if(first==0):
+		reg = [0,0]
+	elif(second==-1):
+		reg = [first-2,first+2]
+	else:
+		if(second<first):
+			reg = [first-2,first+1]
+		else:
+			reg = [first-1,first+2]
+	return reg
+	
+def inreg(f):
+	if(f>=region[0] and f<=region[1]):
+		return True
+	else:
+		return False
 
 #greedy findbest, doesn't work well enough.
 #to find the best position for the next note 
 def findbest(note,ws,wf):
 	#ws - which string you're currenty on
 	#wf - which fret you're currently on
-
+	global region
 	#first, find the note's positions on the fretboard
 	pos_arr = findnote(note,strs)
 
@@ -116,9 +139,11 @@ def findbest(note,ws,wf):
 
 	#current string - for the loop
 	cs = 0
-
+	
 	#looping through all the positions of the note 
 	#and assigning costs to all of them
+	#'''
+	'''
 	for i in pos_arr:
 		if(i==-1):
 			costs.append(1000)
@@ -126,6 +151,30 @@ def findbest(note,ws,wf):
 			#if the new note is on the open string
 			if(i==0):
 				costs.append(diff(cs,ws)-0.5)
+			#if the new note is on the same string	
+			elif(cs==ws):
+				costs.append(diff(i,wf))
+			#if the new note is on the same fret of the different string
+			elif(i==wf):
+				costs.append(diff(cs,ws)-0.5)
+			#if the new note is on a different string and different fret
+			else:
+				costs.append(diff(cs,ws)+diff(i,wf))
+		cs+=1
+	'''
+	#'''
+	#Try using a region based search instead??
+	for i in pos_arr:
+		if(i==-1):
+			costs.append(1000)
+		else:
+			#if the new note is in the region
+			if(inreg(i)):
+				costs.append(0.5+diff(cs,ws)/2)
+				region = regmaker(wf,i)
+			#if the new note is on the open string	
+			elif(i==0):
+				costs.append(diff(cs,ws)+1.5)
 			#if the new note is on the same string	
 			elif(cs==ws):
 				costs.append(diff(i,wf))
@@ -169,10 +218,19 @@ def tabdisplay(tab):
 	showfretboard(tab)
 
 
-#running the program
+#running the program to just see fretboard after making the frets
 fretmaker(tuning,octaves,strs)
 showfretboard(strs)
+tab = [[i] for i in tuning]
+curpos = [3,0]
 print ""
-print "Stairway To Heaven: Tab of the Intro"
+print "The Joker and The Thief (Wolfmother): Intro Riff Tab"
 print ""
-tabitoff(solo,strs)
+tabitoff(soloj,strs)
+
+tab = [[i] for i in tuning]
+curpos = [3,7]
+print ""
+print "Stairway To Heaven (Led Zeppelin): Tab of the Intro"
+print ""
+tabitoff(solos,strs)
