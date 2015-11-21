@@ -10,13 +10,13 @@ Only Python2 is needed.
 
 To run:
 (In terminal)
-python tabber.py
+''python tabber.py''
 
 Checks:
 Make sure you input the proper seed value for the start note as otherwise the first note will be wrongly tabbed.
 
 Sample Output:
-$ python tabber.py
+''$ python tabber.py
 E3   F3   F#3   G3   G#3   A3   A#3   B3   C4   C#4   D4   D#4   E4   F4   F#4   G4   G#4   A4   A#4   B4    
 B2   C3   C#3   D3   D#3   E3   F3   F#3   G3   G#3   A3   A#3   B3   C4   C#4   D4   D#4   E4   F4   F#4    
 G2   G#2   A2   A#2   B2   C3   C#3   D3   D#3   E3   F3   F#3   G3   G#3   A3   A#3   B3   C4   C#4   D4    
@@ -40,7 +40,7 @@ B   -   -   5   -   -   5   -   -   -   5   -   -   7   -   -
 G   -   5   -   -   -   -   5   -   -   -   5   -   -   7   -    
 D   7   -   -   -   -   -   -   -   -   -   -   -   -   -   7    
 A   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -    
-E   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -    
+E   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -    ''
 
 Call for Help:
 Text with single note Solos/Riffs/Licks (like the ones I've used above) in the format ["C3","C#3",...,"B3"] would be appreciated.
